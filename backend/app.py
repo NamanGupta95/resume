@@ -1,3 +1,4 @@
+import os
 import pytesseract
 from flask import Flask, render_template
 from flask_cors import CORS
@@ -25,4 +26,6 @@ def health_check():
     return {"status": "active"}, 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Render assigns a dynamic port, default to 5000 locally
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
