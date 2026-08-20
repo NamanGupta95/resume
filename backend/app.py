@@ -1,14 +1,23 @@
 import pytesseract
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from routes.analyze_routes import analyze_bp
 
 app = Flask(__name__)
 
-# Allows all cross-origin requests. Update to your live frontend URL later for security.
+# Allows all cross-origin requests.
 CORS(app) 
 
 app.register_blueprint(analyze_bp, url_prefix='/api')
+
+# Route to load the frontend UI
+@app.route('/', methods=['GET'])
+def home():
+    return render_template('index.html')
+
+@app.route('/dashboard.html', methods=['GET'])
+def dashboard():
+    return render_template('dashboard.html')
 
 # Health Check Route for Render deployment
 @app.route('/health', methods=['GET'])

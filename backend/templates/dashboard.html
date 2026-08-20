@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - MatchAnalytics Pro</title>
+    <script src="/static/js/tailwind.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    
+    <header class="flex justify-between items-center p-4 bg-white shadow-sm border-b">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="w-6 h-6 bg-blue-600 rounded"></div>
+            <h1 class="text-xl font-bold text-gray-800">MatchAnalytics</h1>
+        </div>
+        <div class="flex gap-3">
+            <button id="editJDBtn" class="text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md text-sm font-medium transition flex items-center gap-2">
+                ✏️ Edit JD
+            </button>
+            <button onclick="window.location.href='index.html'" class="border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300 px-4 py-2 rounded-md text-sm font-medium transition">
+                Scan New
+            </button>
+            <button id="exportReportBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                📄 Export Report
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto mt-8 p-4">
+        <div class="flex justify-between items-center mb-6 animate-slide-up">
+            <h2 class="text-2xl font-bold text-gray-800">Analysis Results</h2>
+            </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="dashboardGrid">
+            </div>
+    </main>
+
+    <script src="/static/js/dashboard.js"></script>
+    <script>
+        document.addEventListener('click', function(e) {
+            const btn = document.getElementById('analyzeAllBtn');
+            const dropdown = document.getElementById('analyzeDropdown');
+            
+            // Agar button par click ho
+            if (btn && btn.contains(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdown.classList.toggle('hidden');
+                console.log("Dropdown toggled via Inline Script");
+            } 
+            // Agar dropdown ke bahar click ho toh band kardo
+            else if (dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    </script>
+    
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
