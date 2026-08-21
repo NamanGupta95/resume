@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Actual Backend Call
-            const response = await fetch('http://localhost:5000/api/analyze', {
+            const response = await fetch('/api/analyze', {
                 method: 'POST',
                 body: formData
             });
