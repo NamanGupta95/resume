@@ -11,8 +11,9 @@ CORS(app)
 
 app.register_blueprint(analyze_bp, url_prefix='/api')
 
-# Route to load the frontend UI
+# Routes to load the frontend UI
 @app.route('/', methods=['GET'])
+@app.route('/index.html', methods=['GET'])
 def home():
     return render_template('index.html')
 
